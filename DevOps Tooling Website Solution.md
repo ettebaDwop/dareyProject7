@@ -20,7 +20,7 @@ Code Repository: GitHub
   
 ## Implementation
 
-### Step 1: Network File System (NFS) Server Preparation
+## Step 1: Network File System (NFS) Server Preparation
 - From the diagram above we will create 5 AWS EC2 instances to serve as:
    * 3 Webservers
    * 1 NFS server and
@@ -90,5 +90,72 @@ Code Repository: GitHub
 sudo lvcreate -n lv-apps -L 9G webdata-vg
 sudo lvcreate -n lv-opt -L 9G webdata-vg
 sudo lvcreate -n lv-logs -L 9G webdata-vg
+`sudo lvs`        #to confirm creation of these volumes run 
 ```
+#### Format disks as xfs
+```
+sudo mkfs -t xfs /dev/webdata-vg/lv-apps
+sudo mkfs -t xfs /dev/webdata-vg/lv-opt
+sudo mkfs -t xfs /dev/webdata-vg/lv-logs
+```
+### Create mount points on /mnt directory for lv-apps and lv-logs
+```
+sudo mkdir /mnt/apps
+sudo mkdir /mnt/logs
+sudo mkdir /mnt/opt
+```
+- Next mount
+```
+sudo mount /dev/webdata-vg/lv-apps /mnt/apps
+sudo mount /dev/webdata-vg/lv-logs /mnt/logs
+sudo mount /dev/webdata-vg/lv-opt /mnt/opt
+```
+## Install and configure NFS Server
+Run the following commands:
+
+```
+sudo yum -y update
+sudo yum install nfs-utils -y
+sudo systemctl start nfs-server.service
+sudo systemctl enable nfs-server.service
+sudo systemctl status nfs-server.service
+```
+
+Set up permission that will allow our Web servers to read, write and execute files on NFS:
+
+```
+sudo chown -R nobody: /mnt/apps
+sudo chown -R nobody: /mnt/logs
+sudo chown -R nobody: /mnt/opt
+
+sudo chmod -R 777 /mnt/apps
+sudo chmod -R 777 /mnt/logs
+sudo chmod -R 777 /mnt/opt
+
+#Restart NFS 
+```
+sudo systemctl restart nfs-server.service
+
+```
+```
+- To configure access to NFS for clients within the same subnet (example of Subnet CIDR – 172.31.32.0/20 ), run the commands:
+
+```
+sudo vi /etc/exports
+
+/mnt/apps <Subnet-CIDR>(rw,sync,no_all_squash,no_root_squash)
+/mnt/logs <Subnet-CIDR>(rw,sync,no_all_squash,no_root_squash)
+/mnt/opt <Subnet-CIDR>(rw,sync,no_all_squash,no_root_squash)
+
+Esc + :wq!
+
+sudo exportfs -arv  # Export mount points so webserver can see them
+```
+- Check which port is used by NFS and open it using Security Groups (add new Inbound Rule)
+  
+`rpcinfo -p | grep nfs`
+  
+*Important note: In order for NFS server to be accessible from your client, you must also open following ports: TCP 111, UDP 111, UDP 2049*
+- 
+## Step 2 — Configure Database Server
 
