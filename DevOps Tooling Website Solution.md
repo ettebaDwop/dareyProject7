@@ -25,7 +25,9 @@ Code Repository: GitHub
    * 1 NFS server and
    * 1 storage server for the Database
 
+![Screenshot (382)](https://github.com/ettebaDwop/dareyProject7/assets/7973831/88cd2309-2ad1-4434-ab22-7bf79dd31903)
 
-
+- The next step is to create 3 EBS logical volumes:
+  
 
 
