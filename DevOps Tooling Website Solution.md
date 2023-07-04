@@ -92,6 +92,8 @@ sudo lvcreate -n lv-opt -L 9G webdata-vg
 sudo lvcreate -n lv-logs -L 9G webdata-vg
 `sudo lvs`        #to confirm creation of these volumes run 
 ```
+![Screenshot (427)](https://github.com/ettebaDwop/dareyProject7/assets/7973831/941502d1-4d8d-4ae6-bc91-b2809dcf89f8)
+![Screenshot (428)](https://github.com/ettebaDwop/dareyProject7/assets/7973831/219666dc-8bc2-4fa8-b6a1-9ad5fdb10b21)
 #### Format disks as xfs
 ```
 sudo mkfs -t xfs /dev/webdata-vg/lv-apps
@@ -99,17 +101,18 @@ sudo mkfs -t xfs /dev/webdata-vg/lv-opt
 sudo mkfs -t xfs /dev/webdata-vg/lv-logs
 ```
 ### Create mount points on /mnt directory for lv-apps and lv-logs
-```
-sudo mkdir /mnt/apps
-sudo mkdir /mnt/logs
-sudo mkdir /mnt/opt
-```
+`sudo mkdir /mnt/apps  /mnt/logs  /mnt/opt`
+![Screenshot (430)](https://github.com/ettebaDwop/dareyProject7/assets/7973831/51071392-4a85-40a6-917a-143f4fa97245)
+##![Screenshot (429)](https://github.com/ettebaDwop/dareyProject7/assets/7973831/6eafa6a1-e9d3-4eff-93b4-0b5325e3af4a)
+
 - Next mount
+  
 ```
 sudo mount /dev/webdata-vg/lv-apps /mnt/apps
 sudo mount /dev/webdata-vg/lv-logs /mnt/logs
 sudo mount /dev/webdata-vg/lv-opt /mnt/opt
 ```
+![Screenshot (431)](https://github.com/ettebaDwop/dareyProject7/assets/7973831/966863b8-9358-44ba-8c4b-fb77bce7ac84)
 
 ## Install and configure NFS Server
 Run the following commands:
@@ -121,6 +124,7 @@ sudo systemctl start nfs-server.service
 sudo systemctl enable nfs-server.service
 sudo systemctl status nfs-server.service
 ```
+![Screenshot (432)](https://github.com/ettebaDwop/dareyProject7/assets/7973831/7af481bc-1c2d-4fd8-97a3-4e958bdc7c5b)
 
 Set up permission that will allow our Web servers to read, write and execute files on NFS:
 
@@ -152,13 +156,15 @@ Esc + :wq!
 
 sudo exportfs -arv  # Export mount points so webserver can see them
 ```
-
+![Screenshot (438)](https://github.com/ettebaDwop/dareyProject7/assets/7973831/ecc21703-1871-4458-921a-a5ea1548ba79)
 
 - Check which port is used by NFS and open it using Security Groups (add new Inbound Rule)
   
 `rpcinfo -p | grep nfs`
+
   
 ###*Important note: In order for NFS server to be accessible from your client, you must also open following ports: TCP 111, UDP 111, UDP 2049*
+
 
 
 
