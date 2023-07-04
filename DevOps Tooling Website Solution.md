@@ -42,7 +42,7 @@ Code Repository: GitHub
   
 ![Screenshot (388)](https://github.com/ettebaDwop/dareyProject7/assets/7973831/f6c2dfed-35ee-455d-8631-5c7c5c548347)
 
-- attach volumes to our NFS server
+- Attach volumes to our NFS server
   
  ![Screenshot (390)](https://github.com/ettebaDwop/dareyProject7/assets/7973831/afb44c21-1414-4a76-b93f-3ca432889614) 
 
@@ -65,5 +65,9 @@ Code Repository: GitHub
 
 `sudo lvmdiskscan`
 
+![Screenshot (400)](https://github.com/ettebaDwop/dareyProject7/assets/7973831/f3123064-b4ba-4173-9fa1-49146a8f36c8)
 
+- Create Physical volumes:
+  
+  `sudo pvcreate  /dev/xvdf1/  /dev/xvdg1  /dev/xvdh1`
 
