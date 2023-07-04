@@ -75,7 +75,7 @@ Code Repository: GitHub
 
 `sudo pvs`
 
-![Screenshot (405)](https://github.com/ettebaDwop/dareyProject7/assets/7973831/a3883b24-4e10-417b-98f6-23e50a78e3eb)
+
 
 - Create a volume group called *webdata-vg*:
   ```
