@@ -85,4 +85,10 @@ Code Repository: GitHub
 
 ![Screenshot (408)](https://github.com/ettebaDwop/dareyProject7/assets/7973831/80f26b0c-b493-4966-82db-089f9ed7dffd)
 
+### Create 3 Logical Volumes
+```
+sudo lvcreate -n lv-apps -L 9G webdata-vg
+sudo lvcreate -n lv-opt -L 9G webdata-vg
+sudo lvcreate -n lv-logs -L 9G webdata-vg
+```
 
