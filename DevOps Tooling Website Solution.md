@@ -27,7 +27,12 @@ Code Repository: GitHub
 
 ![Screenshot (382)](https://github.com/ettebaDwop/dareyProject7/assets/7973831/88cd2309-2ad1-4434-ab22-7bf79dd31903)
 
-- The next step is to create 3 EBS logical volumes:
+- The next step is to create 3 EBS logical volumes ( *lv-opt, lv-apps,* and *lv-logs*):
+
   
+- Next we will create mount points for the volumes created above:
+    Mount lv-apps on /mnt/apps – To be used by webservers
+    Mount lv-logs on /mnt/logs – To be used by webserver logs
+    Mount lv-opt on /mnt/opt – To be used by Jenkins server in Project 8
 
 
