@@ -110,6 +110,7 @@ sudo mount /dev/webdata-vg/lv-apps /mnt/apps
 sudo mount /dev/webdata-vg/lv-logs /mnt/logs
 sudo mount /dev/webdata-vg/lv-opt /mnt/opt
 ```
+
 ## Install and configure NFS Server
 Run the following commands:
 
@@ -151,6 +152,8 @@ Esc + :wq!
 
 sudo exportfs -arv  # Export mount points so webserver can see them
 ```
+
+
 - Check which port is used by NFS and open it using Security Groups (add new Inbound Rule)
   
 `rpcinfo -p | grep nfs`
