@@ -37,5 +37,7 @@ Code Repository: GitHub
     Mount lv-opt on /mnt/opt – To be used by Jenkins server in Project 8
 
 - Fire up Git Bash terminal to connect to our EC2 instances:
-  
+
+- attach volumes to our NFS server
+ ![Screenshot (390)](https://github.com/ettebaDwop/dareyProject7/assets/7973831/afb44c21-1414-4a76-b93f-3ca432889614) 
 
