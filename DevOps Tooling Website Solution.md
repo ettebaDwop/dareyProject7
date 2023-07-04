@@ -46,9 +46,24 @@ Code Repository: GitHub
   
  ![Screenshot (390)](https://github.com/ettebaDwop/dareyProject7/assets/7973831/afb44c21-1414-4a76-b93f-3ca432889614) 
 
- - Next we create partitions on the 3 disks (xvdf, xvdg and xvdh):
+ - Next we create partitions on the 3 disks (xvdf1, xvdg1 and xvdh1): Run,
    
-   `sudo gdisk /dev/xvdf`
-   `sudo gdisk /dev/xvdg`
-   `sudo gdisk /dev/xvdh`
+  ``` 
+   sudo gdisk /dev/xvdf
+   sudo gdisk /dev/xvdg
+   sudo gdisk /dev/xvdh
+   lsblk
+```
+
+![Screenshot (397)](https://github.com/ettebaDwop/dareyProject7/assets/7973831/d8b76a56-b5bd-4a6a-8995-51fc27e7fa19)
+
+- Next we will install LVM2:
+  
+  `sudo yum install lvm2 -y`
+  
+- We check for available disks by running the command:
+
+`sudo lvmdiskscan`
+
+
 
