@@ -19,6 +19,11 @@ Code Repository: GitHub
   RHEL-8.6.0_HVM-20220503-x86_64-2-Hourly2-GP2 (ami-035c5dc086849b5de)
   
 ### Implementation
+#### Step 1: Network File System (NFS) Server Preparation
+- From the diagram above we will create 5 AWS EC2 instances to serve as:
+   * 3 Webservers
+   * 1 NFS server and
+   * 1 storage server for the Database
 
 
 
