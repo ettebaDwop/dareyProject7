@@ -162,10 +162,11 @@ sudo exportfs -arv  # Export mount points so webserver can see them
   
 `rpcinfo -p | grep nfs`
 
-  
+![Screenshot (439)](https://github.com/ettebaDwop/dareyProject7/assets/7973831/2b6ede1b-5481-4a92-8da0-7846f1e38af6)
+
 ###*Important note: In order for NFS server to be accessible from your client, you must also open following ports: TCP 111, UDP 111, UDP 2049*
 
-
+![Screenshot (442)](https://github.com/ettebaDwop/dareyProject7/assets/7973831/3f6dcd91-ffa6-4e11-b1d3-7ffa1d8f4660)
 
 
 ## Step 2 — Configure Database Server
