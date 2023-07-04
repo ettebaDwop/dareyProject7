@@ -75,9 +75,14 @@ Code Repository: GitHub
 
 `sudo pvs`
 
+![Screenshot (405)](https://github.com/ettebaDwop/dareyProject7/assets/7973831/a3883b24-4e10-417b-98f6-23e50a78e3eb)
+
 - Create a volume group called *webdata-vg*:
   ```
   sudo vgcreate webdata-vg  /dev/xvdf1/  /dev/xvdg1  /dev/xvdh1
   sudo vgs #to check volume group created
   ```
+
+![Screenshot (408)](https://github.com/ettebaDwop/dareyProject7/assets/7973831/80f26b0c-b493-4966-82db-089f9ed7dffd)
+
 
