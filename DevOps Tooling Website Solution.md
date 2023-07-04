@@ -27,12 +27,15 @@ Code Repository: GitHub
 
 ![Screenshot (382)](https://github.com/ettebaDwop/dareyProject7/assets/7973831/88cd2309-2ad1-4434-ab22-7bf79dd31903)
 
-- The next step is to create 3 EBS logical volumes ( *lv-opt, lv-apps,* and *lv-logs*):
+- The next step is to create 3 EBS logical volumes (*lv-opt, lv-apps,* and *lv-logs*):
 
+![Screenshot (385)](https://github.com/ettebaDwop/dareyProject7/assets/7973831/c26994db-0831-4b04-a343-e5257c08d733)
   
 - Next we will create mount points for the volumes created above:
     Mount lv-apps on /mnt/apps – To be used by webservers
     Mount lv-logs on /mnt/logs – To be used by webserver logs
     Mount lv-opt on /mnt/opt – To be used by Jenkins server in Project 8
 
+- Fire up Git Bash terminal to connect to our EC2 instances:
+  
 
