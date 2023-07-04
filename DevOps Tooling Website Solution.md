@@ -70,4 +70,14 @@ Code Repository: GitHub
 - Create Physical volumes:
   
   `sudo pvcreate  /dev/xvdf1/  /dev/xvdg1  /dev/xvdh1`
+  
+![Screenshot (402)](https://github.com/ettebaDwop/dareyProject7/assets/7973831/69b5792f-8744-4b47-8d25-205e8ec388f0)
+
+`sudo pvs`
+
+- Create a volume group called *webdata-vg*:
+  ```
+  sudo vgcreate webdata-vg  /dev/xvdf1/  /dev/xvdg1  /dev/xvdh1
+  sudo vgs #to check volume group created
+  ```
 
