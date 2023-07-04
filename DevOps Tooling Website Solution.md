@@ -6,7 +6,7 @@ This tooling solution would be in the form of a three tier architecture****
 
 ![image](https://github.com/ettebaDwop/dareyProject7/assets/7973831/78231a41-8542-45b1-87c2-deb64c2db73c)
 
-### Prerequisites
+## Prerequisites
 In this project you will implement a solution that consists of following components:
 Infrastructure: AWS
 Webserver Linux: Red Hat Enterprise Linux 8
@@ -18,8 +18,9 @@ Code Repository: GitHub
 * For Rhel 8 server use this ami: 
   RHEL-8.6.0_HVM-20220503-x86_64-2-Hourly2-GP2 (ami-035c5dc086849b5de)
   
-### Implementation
-#### Step 1: Network File System (NFS) Server Preparation
+## Implementation
+
+### Step 1: Network File System (NFS) Server Preparation
 - From the diagram above we will create 5 AWS EC2 instances to serve as:
    * 3 Webservers
    * 1 NFS server and
@@ -32,15 +33,22 @@ Code Repository: GitHub
 ![Screenshot (385)](https://github.com/ettebaDwop/dareyProject7/assets/7973831/c26994db-0831-4b04-a343-e5257c08d733)
   
 - Next we will create mount points for the volumes created above:
-    Mount lv-apps on /mnt/apps – To be used by webservers
-    Mount lv-logs on /mnt/logs – To be used by webserver logs
-    Mount lv-opt on /mnt/opt – To be used by Jenkins server in Project 8
+  
+    * Mount lv-apps on /mnt/apps – To be used by webservers
+    * Mount lv-logs on /mnt/logs – To be used by webserver logs
+    * Mount lv-opt on /mnt/opt – To be used by Jenkins server in Project 8
 
 - Fire up Git Bash terminal to connect to our EC2 instances:
-- 
-
+  
+![Screenshot (388)](https://github.com/ettebaDwop/dareyProject7/assets/7973831/f6c2dfed-35ee-455d-8631-5c7c5c548347)
 
 - attach volumes to our NFS server
   
  ![Screenshot (390)](https://github.com/ettebaDwop/dareyProject7/assets/7973831/afb44c21-1414-4a76-b93f-3ca432889614) 
+
+ - Next we create partitions on the 3 disks (xvdf, xvdg and xvdh):
+   
+   `sudo gdisk /dev/xvdf`
+   `sudo gdisk /dev/xvdg`
+   `sudo gdisk /dev/xvdh`
 
