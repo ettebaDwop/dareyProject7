@@ -4,7 +4,7 @@ In this project we will implement a tooling website solution which makes access 
 This tooling solution would be in the form of a three tier architecture****
 
 
-
+![image](https://github.com/ettebaDwop/dareyProject7/assets/7973831/78231a41-8542-45b1-87c2-deb64c2db73c)
 
 ### Prerequisites
 In this project you will implement a solution that consists of following components:
