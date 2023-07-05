@@ -20,7 +20,7 @@ Code Repository: GitHub
   
 ## Implementation
 
-## Step 1: Network File System (NFS) Server Preparation
+### Step 1: Network File System (NFS) Server Preparation
 - From the diagram above we will create 5 AWS EC2 instances to serve as:
    * 3 Webservers
    * 1 NFS server and
@@ -78,6 +78,7 @@ Code Repository: GitHub
 
 
 - Create a volume group called *webdata-vg*:
+
   ```
   sudo vgcreate webdata-vg  /dev/xvdf1/  /dev/xvdg1  /dev/xvdh1
   sudo vgs #to check volume group created
@@ -85,24 +86,31 @@ Code Repository: GitHub
 
 ![Screenshot (408)](https://github.com/ettebaDwop/dareyProject7/assets/7973831/80f26b0c-b493-4966-82db-089f9ed7dffd)
 
-### Create 3 Logical Volumes
+#### Create 3 Logical Volumes
+
 ```
 sudo lvcreate -n lv-apps -L 9G webdata-vg
 sudo lvcreate -n lv-opt -L 9G webdata-vg
 sudo lvcreate -n lv-logs -L 9G webdata-vg
 `sudo lvs`        #to confirm creation of these volumes run 
 ```
+
 ![Screenshot (427)](https://github.com/ettebaDwop/dareyProject7/assets/7973831/941502d1-4d8d-4ae6-bc91-b2809dcf89f8)
+
 ![Screenshot (428)](https://github.com/ettebaDwop/dareyProject7/assets/7973831/219666dc-8bc2-4fa8-b6a1-9ad5fdb10b21)
+
 #### Format disks as xfs
 ```
 sudo mkfs -t xfs /dev/webdata-vg/lv-apps
 sudo mkfs -t xfs /dev/webdata-vg/lv-opt
 sudo mkfs -t xfs /dev/webdata-vg/lv-logs
 ```
-### Create mount points on /mnt directory for lv-apps and lv-logs
+#### Create mount points on /mnt directory for lv-apps and lv-logs
+
 `sudo mkdir /mnt/apps  /mnt/logs  /mnt/opt`
+
 ![Screenshot (430)](https://github.com/ettebaDwop/dareyProject7/assets/7973831/51071392-4a85-40a6-917a-143f4fa97245)
+
 ##![Screenshot (429)](https://github.com/ettebaDwop/dareyProject7/assets/7973831/6eafa6a1-e9d3-4eff-93b4-0b5325e3af4a)
 
 - Next mount
@@ -114,7 +122,8 @@ sudo mount /dev/webdata-vg/lv-opt /mnt/opt
 ```
 ![Screenshot (431)](https://github.com/ettebaDwop/dareyProject7/assets/7973831/966863b8-9358-44ba-8c4b-fb77bce7ac84)
 
-## Install and configure NFS Server
+#### Install and configure NFS Server
+
 Run the following commands:
 
 ```
@@ -137,14 +146,12 @@ sudo chmod -R 777 /mnt/apps
 sudo chmod -R 777 /mnt/logs
 sudo chmod -R 777 /mnt/opt
 
-#Restart NFS 
-```
-sudo systemctl restart nfs-server.service
+#Restart NFS
 
-```
+`sudo systemctl restart nfs-server.service`
+
 ```
 - To configure access to NFS for clients within the same subnet (example of Subnet CIDR – 172.31.32.0/20 ), run the commands:
-
 ```
 sudo vi /etc/exports
 
@@ -156,6 +163,7 @@ Esc + :wq!
 
 sudo exportfs -arv  # Export mount points so webserver can see them
 ```
+
 ![Screenshot (438)](https://github.com/ettebaDwop/dareyProject7/assets/7973831/ecc21703-1871-4458-921a-a5ea1548ba79)
 
 - Check which port is used by NFS and open it using Security Groups (add new Inbound Rule)
@@ -169,7 +177,7 @@ sudo exportfs -arv  # Export mount points so webserver can see them
 ![Screenshot (442)](https://github.com/ettebaDwop/dareyProject7/assets/7973831/3f6dcd91-ffa6-4e11-b1d3-7ffa1d8f4660)
 
 
-## Step 2 — Configure Database Server
+### Step 2 — Configure Database Server
 
 To install and configure a MySQL DBMS to work with remote Web Server we will follow these steps:
 
@@ -177,5 +185,41 @@ To install and configure a MySQL DBMS to work with remote Web Server we will fol
 - Create a database and name it *tooling*
 - Create a database user and name it *"webaccess"*
 - Grant permission to webaccess user on tooling database to do anything only from the webservers subnet cidr
+
+![Screenshot (433)](https://github.com/ettebaDwop/dareyProject7/assets/7973831/98992f5a-e809-40dc-b574-411fd2438e81)
+
+![Screenshot (434)](https://github.com/ettebaDwop/dareyProject7/assets/7973831/981332a1-893a-443b-a55a-569650268bb7)
+
+### Step 3 — Prepare the Web Servers
+
+The steps involved in preparing the Web Servers would include:
+
+- Configuring NFS client (this step must be done on all three servers)
+- Deploying a Tooling application to our Web Servers into a shared NFS folder
+- Configuring the Web Servers to work with a single MySQL database
+
+*Connect to the Webserver_1 (already created at the start of the project)
+
+#### Install NFS Client
+
+```
+sudo yum update
+sudo yum install nfs-utils nfs4-acl-tools -y
+```
+*Mount /var/www/ and target the NFS server’s export for apps
+```
+sudo mkdir /var/www
+sudo mount -t nfs -o rw,nosuid <NFS-Server-Private-IP-Address>:/mnt/apps /var/www
+```
+
+- Verify that NFS was mounted successfully by running df -h. Make sure that the changes will persist on Web Server after reboot:
+  
+`sudo vi /etc/fstab`
+
+ add following line
+
+'<NFS-Server-Private-IP-Address>:/mnt/apps /var/www nfs defaults 0 0'
+
+
 
 
