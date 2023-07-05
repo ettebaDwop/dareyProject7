@@ -242,6 +242,8 @@ df -h
 ### *Repeat steps 1-5 for Weserver_2 and Webserver_3* 
 
 - Verify presence of Apache file on the Webserver /var/wwww file and the NFS Server /mnt/apps file
+- 
+![Screenshot (471)](https://github.com/ettebaDwop/dareyProject7/assets/7973831/9c045493-b096-4d72-87d6-b8d877c3c4ed)
 
 - Locate log folder for Apache on WebServer
 `sudo mount -t nfs -o rw,nosuid 172.31.43.1:/mnt/logs /var/log/httpd`
