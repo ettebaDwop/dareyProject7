@@ -254,8 +254,24 @@ df -h
 
 #### Add the following line: *<NFS-Server-Private-IP-Address>:/mnt/log /var/log/httpd nfs defaults 0 0*
 
+- Fork the tooling source code from Darey.io Github Account to your Github account. (Learn how to fork a repo here)
+  
+- Deploy the tooling website’s code to the Webserver. Ensure that the html folder from the repository is deployed to /var/www/html
+  `   `
+- Update the website’s configuration to connect to the database (in /var/www/html/functions.php file). Apply tooling-db.sql script to your database using this command mysql -h <databse-private-ip> -u <db-username> -p <db-pasword> < tooling-db.sql
+  
+- In the Database Server run the MySql command to create a new admin user with username: myuser and password: password:
+  
+```
+INSERT INTO ‘users’ (‘id’, ‘username’, ‘password’, ’email’, ‘user_type’, ‘status’) VALUES
+-> (1, ‘myuser’, ‘5f4dcc3b5aa765d61d8327deb882cf99’, ‘user@mail.com’, ‘admin’, ‘1’);
+```
 
+
+  
 `select * from users;`
 
 ![Screenshot (466)](https://github.com/ettebaDwop/dareyProject7/assets/7973831/fbb7072d-48e4-4209-b560-a94d1c42bdeb)
+
+Open the website in your browser http://<Web-Server-Public-IP-Address-or-Public-DNS-Name>/index.php and make sure you can login into the website with myuser user.
 
