@@ -242,10 +242,11 @@ df -h
 ### *Repeat steps 1-5 for Weserver_2 and Webserver_3* 
 
 - Verify presence of Apache file on the Webserver /var/wwww file and the NFS Server /mnt/apps file
-- 
+
 ![Screenshot (471)](https://github.com/ettebaDwop/dareyProject7/assets/7973831/9c045493-b096-4d72-87d6-b8d877c3c4ed)
 
 - Locate log folder for Apache on WebServer
+  
 `sudo mount -t nfs -o rw,nosuid 172.31.43.1:/mnt/logs /var/log/httpd`
 
 -Repeat fstab configuration here for the log folder 
@@ -259,29 +260,32 @@ df -h
   ![Screenshot (475)](https://github.com/ettebaDwop/dareyProject7/assets/7973831/4e9b4a7c-9a36-4e16-8d17-c8e20f1d4603)
   
 - Deploy the tooling website’s code to the Webserver. Ensure that the html folder from the repository is deployed to /var/www/html
-  `   `
+  
+
+  
 - Update the website’s configuration to connect to the database (in /var/www/html/functions.php file). Apply tooling-db.sql script to your database using this command mysql -h <databse-private-ip> -u <db-username> -p <db-pasword> < tooling-db.sql
-- 
+  
 ![Screenshot (480)](https://github.com/ettebaDwop/dareyProject7/assets/7973831/782b99d5-fc23-4bbf-9d09-f9552cc2feaa)
 
 ![Screenshot (481)](https://github.com/ettebaDwop/dareyProject7/assets/7973831/64c9d905-f441-4b6d-b24a-da230af1a57d)
 
+`mysql -h 172.31.46.252 -u webaccess -p tooling < tooling-db.sql`
+  
 ![Screenshot (483)](https://github.com/ettebaDwop/dareyProject7/assets/7973831/41c55654-824c-41c2-9160-7427a539e04b)
+
 - In the Database Server run the MySql command to create a new admin user with username: myuser and password: password:
   
 ```
 INSERT INTO ‘users’ (‘id’, ‘username’, ‘password’, ’email’, ‘user_type’, ‘status’) VALUES
--> (1, ‘myuser’, ‘5f4dcc3b5aa765d61d8327deb882cf99’, ‘user@mail.com’, ‘admin’, ‘1’);
-```
- 
-`select * from users;`
+-> (2, ‘myuser’, ‘5f4dcc3b5aa765d61d8327deb882cf99’, ‘user@mail.com’, ‘admin’, ‘1’);
 
+select * from users;
+```
 ![Screenshot (482)](https://github.com/ettebaDwop/dareyProject7/assets/7973831/1ed46a13-aefa-4ace-958d-b252295aed7e)
 
-
-
 Open the website in your browser http://<Web-Server-Public-IP-Address-or-Public-DNS-Name>/index.php and make sure you can login into the website with myuser user.
-![Screenshot (484)](https://github.com/ettebaDwop/dareyProject7/assets/7973831/57c921ff-4aac-43c2-9775-4c28b41c2fc7)
+
 ![Screenshot (479)](https://github.com/ettebaDwop/dareyProject7/assets/7973831/37812cd1-ae80-430c-b403-06dd89b86fa5)
 
+![Screenshot (484)](https://github.com/ettebaDwop/dareyProject7/assets/7973831/57c921ff-4aac-43c2-9775-4c28b41c2fc7)
 
