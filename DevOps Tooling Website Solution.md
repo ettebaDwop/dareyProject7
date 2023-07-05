@@ -171,3 +171,11 @@ sudo exportfs -arv  # Export mount points so webserver can see them
 
 ## Step 2 — Configure Database Server
 
+To install and configure a MySQL DBMS to work with remote Web Server we will follow these steps:
+
+- Install MySQL server
+- Create a database and name it *tooling*
+- Create a database user and name it *"webaccess"*
+- Grant permission to webaccess user on tooling database to do anything only from the webservers subnet cidr
+
+
