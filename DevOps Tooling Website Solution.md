@@ -224,7 +224,30 @@ df -h
 
 #Add the following line: *<NFS-Server-Private-IP-Address>:/mnt/apps /var/www nfs defaults 0 0*
 
+![Screenshot (470)](https://github.com/ettebaDwop/dareyProject7/assets/7973831/30cb64de-51a5-44cc-b05f-3e254f1167d9)
 
+- Install Apache, PHP and Remi's Repository run the following commands:
+- 
+  ```
+  sudo yum install httpd -y
+
+  sudo yum install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-9.noarch.rpm
+  
+  sudo yum install -y dnf-utils http://rpms.remirepo.net/enterprise/remi-release-9.rpm
+  
+  sudo dnf module reset php
+
+  sudo dnf module enable php:remi-7.4
+
+  sudo dnf install php php-opcache php-gd php-curl php-mysqlnd
+
+  sudo systemctl start php-fpm
+
+  sudo systemctl enable php-fpm
+
+  setsebool -P httpd_execmem 1
+```
+  
 
 888 select * from users; 888
 ![Screenshot (466)](https://github.com/ettebaDwop/dareyProject7/assets/7973831/fbb7072d-48e4-4209-b560-a94d1c42bdeb)
