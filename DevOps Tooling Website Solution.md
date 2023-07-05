@@ -261,7 +261,15 @@ df -h
   
 - Deploy the tooling website’s code to the Webserver. Ensure that the html folder from the repository is deployed to /var/www/html
   
+-Open port 80 on Webserver_1,_2,_3
 
+- Check permissions and set *SELINUX=disabled*
+  ```
+  sudo setenforce 0
+  sudo vi /etc/sysconfig/selinux  
+  ```
+  
+  ![Screenshot (477)](https://github.com/ettebaDwop/dareyProject7/assets/7973831/e7537a2f-3d0b-4545-818d-c67614c41a7e)
   
 - Update the website’s configuration to connect to the database (in /var/www/html/functions.php file). Apply tooling-db.sql script to your database using this command mysql -h <databse-private-ip> -u <db-username> -p <db-pasword> < tooling-db.sql
   
