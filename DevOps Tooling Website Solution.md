@@ -248,9 +248,9 @@ df -h
   setsebool -P httpd_execmem 1
   
 ```
+Repeat steps 1-5 for Weserver_2 and Webserver_3 
 
-### Repeat steps 1-5 for Weserver_2 and Webserver_3* 
+`select * from users;`
 
-888 select * from users; 888
 ![Screenshot (466)](https://github.com/ettebaDwop/dareyProject7/assets/7973831/fbb7072d-48e4-4209-b560-a94d1c42bdeb)
 
