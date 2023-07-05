@@ -194,9 +194,9 @@ To install and configure a MySQL DBMS to work with remote Web Server we will fol
 
 The steps involved in preparing the Web Servers would include:
 
-- Configuring NFS client (this step must be done on all three servers)
-- Deploying a Tooling application to our Web Servers into a shared NFS folder
-- Configuring the Web Servers to work with a single MySQL database
+1. Configuring NFS client (this step must be done on all three servers)
+2. Deploying a Tooling application to our Web Servers into a shared NFS folder
+3. Configuring the Web Servers to work with a single MySQL database
 
 *Connect to the Webserver_1 (already created at the start of the project)
 
