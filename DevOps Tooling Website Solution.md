@@ -222,7 +222,7 @@ df -h
   
 `sudo vi /etc/fstab`
 
-#Add the following line: *<NFS-Server-Private-IP-Address>:/mnt/apps /var/www nfs defaults 0 0*
+#### Add the following line: *<NFS-Server-Private-IP-Address>:/mnt/apps /var/www nfs defaults 0 0*
 
 ![Screenshot (470)](https://github.com/ettebaDwop/dareyProject7/assets/7973831/30cb64de-51a5-44cc-b05f-3e254f1167d9)
 
@@ -230,25 +230,28 @@ df -h
   
   ```
   sudo yum install httpd -y
-
   sudo yum install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-9.noarch.rpm
-  
   sudo yum install -y dnf-utils http://rpms.remirepo.net/enterprise/remi-release-9.rpm
-  
   sudo dnf module reset php
-
   sudo dnf module enable php:remi-7.4
-
   sudo dnf install php php-opcache php-gd php-curl php-mysqlnd
-
   sudo systemctl start php-fpm
-
   sudo systemctl enable php-fpm
-
   setsebool -P httpd_execmem 1
-  
-```
-Repeat steps 1-5 for Weserver_2 and Webserver_3 
+  ```
+### *Repeat steps 1-5 for Weserver_2 and Webserver_3* 
+
+- Verify presence of Apache file on the Webserver /var/wwww file and the NFS Server /mnt/apps file
+
+- Locate log folder for Apache on WebServer
+`sudo mount -t nfs -o rw,nosuid 172.31.43.1:/mnt/logs /var/log/httpd`
+
+-Repeat fstab configuration here for the log folder 
+
+`sudo vi /etc/fstab`
+
+#### Add the following line: *<NFS-Server-Private-IP-Address>:/mnt/log /var/log/httpd nfs defaults 0 0*
+
 
 `select * from users;`
 
