@@ -208,7 +208,7 @@ The steps involved in preparing the Web Servers would include:
 sudo yum update
 sudo yum install nfs-utils nfs4-acl-tools -y
 ```
-*Mount /var/www/ and target the NFS server’s export for apps
+*Mount /var/www/ and target the NFS server’s export for apps. Verify that NFS was mounted successfully by running *df -h*. Make sure that the changes will persist on Web Server after reboot:
 
 ```
 sudo mkdir /var/www
@@ -216,16 +216,16 @@ sudo mount -t nfs -o rw,nosuid <NFS-Server-Private-IP-Address>:/mnt/apps /var/ww
 lsblk
 df -h
 ```
+![Screenshot (465)](https://github.com/ettebaDwop/dareyProject7/assets/7973831/59db6046-06b1-4a7f-830b-39f7ac53ba6c)
 
-
-- Verify that NFS was mounted successfully by running df -h. Make sure that the changes will persist on Web Server after reboot:
+- Configure the /etc/fstab file
   
 `sudo vi /etc/fstab`
 
- add following line
-
-'<NFS-Server-Private-IP-Address>:/mnt/apps /var/www nfs defaults 0 0'
+#Add the following line: *<NFS-Server-Private-IP-Address>:/mnt/apps /var/www nfs defaults 0 0*
 
 
 
+888 select * from users; 888
+![Screenshot (466)](https://github.com/ettebaDwop/dareyProject7/assets/7973831/fbb7072d-48e4-4209-b560-a94d1c42bdeb)
 
