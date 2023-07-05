@@ -227,7 +227,7 @@ df -h
 ![Screenshot (470)](https://github.com/ettebaDwop/dareyProject7/assets/7973831/30cb64de-51a5-44cc-b05f-3e254f1167d9)
 
 - Install Apache, PHP and Remi's Repository run the following commands:
-- 
+  
   ```
   sudo yum install httpd -y
 
@@ -247,7 +247,7 @@ df -h
 
   setsebool -P httpd_execmem 1
 ```
-  
+*Repeat steps 1-5 for Weserver_2 and Webserver_3* 
 
 888 select * from users; 888
 ![Screenshot (466)](https://github.com/ettebaDwop/dareyProject7/assets/7973831/fbb7072d-48e4-4209-b560-a94d1c42bdeb)
