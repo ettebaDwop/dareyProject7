@@ -200,6 +200,8 @@ The steps involved in preparing the Web Servers would include:
 
 *Connect to the Webserver_1 (already created at the start of the project)
 
+![Screenshot (467)](https://github.com/ettebaDwop/dareyProject7/assets/7973831/36bb97a5-92e9-4774-8462-fffb3e8fe81e)
+
 #### Install NFS Client
 
 ```
@@ -207,10 +209,14 @@ sudo yum update
 sudo yum install nfs-utils nfs4-acl-tools -y
 ```
 *Mount /var/www/ and target the NFS server’s export for apps
+
 ```
 sudo mkdir /var/www
 sudo mount -t nfs -o rw,nosuid <NFS-Server-Private-IP-Address>:/mnt/apps /var/www
+lsblk
+df -h
 ```
+
 
 - Verify that NFS was mounted successfully by running df -h. Make sure that the changes will persist on Web Server after reboot:
   
