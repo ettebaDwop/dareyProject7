@@ -280,7 +280,7 @@ df -h
 
 ![Screenshot (481)](https://github.com/ettebaDwop/dareyProject7/assets/7973831/64c9d905-f441-4b6d-b24a-da230af1a57d)
 
-*Make sure to restart Mysql Server after changing the bind address on the conf file.*
+### *Make sure to restart Mysql Server after changing the bind-address to 0.0.0.0 on the conf file.*
 
 `mysql -h 172.31.46.252 -u webaccess -p tooling < tooling-db.sql`
   
