@@ -294,7 +294,8 @@ INSERT INTO ‘users’ (‘id’, ‘username’, ‘password’, ’email’, 
 
 select * from users;
 ```
-![Screenshot (591)](https://github.com/ettebaDwop/dareyProject7/assets/7973831/8c6b8611-ae41-4bf9-aa4e-21f2222ba5a0)
+![Screenshot (591)](https://github.com/ettebaDwop/dareyProject7/assets/7973831/71178608-8224-42a5-9454-740d6fbda6be)
+
 
 
 Open the website in your browser http://<Web-Server-Public-IP-Address-or-Public-DNS-Name>/index.php and make sure you can login into the website with myuser user.
