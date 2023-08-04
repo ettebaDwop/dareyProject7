@@ -261,6 +261,8 @@ df -h
   
 - Deploy the tooling website’s code to the Webserver. Ensure that the html folder from the repository is deployed to /var/www/html
   
+  `sudo cp -R html/. /var/www/html`
+  
 -Open port 80 on Webserver_1,_2,_3
 
 - Check permissions and set *SELINUX=disabled*
