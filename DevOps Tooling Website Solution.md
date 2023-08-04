@@ -273,11 +273,14 @@ df -h
   
   ![Screenshot (477)](https://github.com/ettebaDwop/dareyProject7/assets/7973831/e7537a2f-3d0b-4545-818d-c67614c41a7e)
   
-- Update the website’s configuration to connect to the database (in /var/www/html/functions.php file). Apply tooling-db.sql script to your database using this command mysql -h <databse-private-ip> -u <db-username> -p <db-pasword> < tooling-db.sql
+- Update the website’s configuration to connect to the database (in /var/www/html/functions.php file).
+-  Apply tooling-db.sql script to your database using this command mysql -h <databse-private-ip> -u <db-username> -p <db-pasword> < tooling-db.sql
   
 ![Screenshot (480)](https://github.com/ettebaDwop/dareyProject7/assets/7973831/782b99d5-fc23-4bbf-9d09-f9552cc2feaa)
 
 ![Screenshot (481)](https://github.com/ettebaDwop/dareyProject7/assets/7973831/64c9d905-f441-4b6d-b24a-da230af1a57d)
+
+*Make sure to restart Mysql Server after changing the bind address on the conf file.*
 
 `mysql -h 172.31.46.252 -u webaccess -p tooling < tooling-db.sql`
   
